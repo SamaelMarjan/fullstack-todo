@@ -13,7 +13,9 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (profileRef.current && !profileRef.current.contains(event.target) && !event.target.classList.contains('modal-link')) {
+      if (profileRef.current && 
+        !profileRef.current.contains(event.target) && 
+        !event.target.classList.contains('modal-link')) {
         setClick(false);
       }
     };
