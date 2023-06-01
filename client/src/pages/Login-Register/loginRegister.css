@@ -1,0 +1,31 @@
+.register, .login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.register-form, .login-form {
+    width: 35vw;
+    margin: 0 auto;
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.actons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-style {
+    position: absolute;
+    top: 75px;
+    right: 35px;
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+    background-color: #333;
+    border-radius: 5px;
+}
