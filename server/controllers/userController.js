@@ -65,3 +65,31 @@ module.exports.loginUser = async(req, res) => {
         })
     }
 }
+
+//forgot password controller
+module.exports.forgotController = async(req, res) => {
+    try {
+        const {email, newPass} = req.body
+
+        //validations
+        if(!email || !newPass) return res.json({message: 'Email password required'})
+
+        //check user
+        const user = await userModel.findOne({email})
+        if(!user) return res.json({message: 'Invalid email'})
+
+        //hash password
+        const hash = await hashPass(newPass)
+
+        await userModel.findByIdAndUpdate(user._id, {password: hash})
+
+        res.status(200).json({
+            success: true, message: 'Password reset successfull'
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            success: false, message: 'Error on reset password'
+        })
+    }
+}

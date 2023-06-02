@@ -1,11 +1,11 @@
-.register, .login {
+.register, .login, .forgot {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
 }
 
-.register-form, .login-form {
+.register-form, .login-form, .forgot-form {
     width: 35vw;
     margin: 0 auto;
     border: 1px solid #333;

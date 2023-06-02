@@ -7,6 +7,8 @@ import Footer from './components/Footer/Footer';
 import Login from './pages/Login-Register/Login';
 import Register from './pages/Login-Register/Register';
 import Create from './pages/Create/Create';
+import Todos from './pages/Todos/Todos';
+import ForgotPass from './pages/Login-Register/ForgotPass';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/forgot' element={<ForgotPass />} />
         <Route path='/create' element={<Create />} />
+        <Route path='/todos' element={<Todos />} />
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
