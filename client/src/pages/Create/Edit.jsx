@@ -1,13 +1,16 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-const Edit = ({pid}) => {
+const Edit = ({pid, handleModal, getAllTodo}) => {
     const [input, setInput] = useState({
         title: '',
         desc: ''
       })
+
+      const {user, token} = useSelector((state) => state.auth)
 
       const {id} = useParams()
     
@@ -31,8 +34,26 @@ const Edit = ({pid}) => {
         singleData()
       }, [id])
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async(e) => {
         e.preventDefault()
+        try {
+            const {data} = await axios.put(`http://localhost:5000/todo/update/${pid}`, input, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            console.log(data);
+            if(data.success === true) {
+                toast.success(data.message)
+                handleModal()
+                getAllTodo()
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error('Something wrong')
+        }
       }
 
   return (

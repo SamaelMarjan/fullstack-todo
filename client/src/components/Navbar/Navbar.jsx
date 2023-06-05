@@ -72,10 +72,10 @@ const Navbar = () => {
               <div className='modal-style' onClick={handleOpen}>
                 <ul>
                   <li>
-                    <Link to={'/dashbord'} className='modal-link'>Dashbord</Link>
+                    <Link to={'/profile'} className='modal-link'>Profile</Link>
                   </li>
                   <li>
-                    <Link to={'/profile'} className='modal-link'>Profile</Link>
+                    <Link to={'/dashbord'} className='modal-link'>Dashbord</Link>
                   </li>
                   <li>
                     <NavLink to={'/create'} className='modal-link'>Create</NavLink>

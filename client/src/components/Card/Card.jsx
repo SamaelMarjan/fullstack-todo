@@ -4,8 +4,9 @@ import {FiEdit} from 'react-icons/fi'
 import './card.css'
 import { Modal } from 'antd'
 import Edit from '../../pages/Create/Edit'
+import moment from 'moment'
 
-const Card = ({title, desc, id, created, updated}) => {
+const Card = ({title, desc, id, created, updated, getAllTodo}) => {
     const [modal, setModal] = useState(false)
 
     const handleModal = () => {
@@ -23,11 +24,11 @@ const Card = ({title, desc, id, created, updated}) => {
                 <FiEdit onClick={() => {handleModal()}} />
             </div>
             <div className='created-updated'>
-                <span>updatedAt: {updated}</span> &nbsp;
-                <span>createdAt: {created}</span>
+                <span>updatedAt: {moment(updated).format('YYYY-MM-DD')}</span> &nbsp;
+                <span>createdAt: {moment(created).format('YYYY-MM-DD')}</span>
             </div>
             <Modal open={modal} onCancel={handleModal} onOk={handleModal}>
-                <Edit pid={id} />
+                <Edit pid={id} handleModal={handleModal} getAllTodo={getAllTodo} />
             </Modal>
         </div>
     </div>

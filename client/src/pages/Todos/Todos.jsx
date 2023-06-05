@@ -21,7 +21,9 @@ const Todos = () => {
     try {
       const {data} = await axios.get('http://localhost:5000/todo/get')
       console.log(data.todo);
-      setTodo(data.todo)
+      // Sort todos by createdAt in descending order
+      const sortedTodos = data.todo.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt) || new Date(b.createdAt) - new Date(a.createdAt));
+      setTodo(sortedTodos)
     } catch (error) {
       console.log(error);
       toast.error('Something wrong')
@@ -51,7 +53,7 @@ const Todos = () => {
                 {
                   user?._id === todo?.userId?._id ? <>
                     <div className='card mb-5'>
-                      <Card title={todo.title} desc={todo.desc} id={todo._id} created={todo.createdAt} updated={todo.updatedAt} />
+                      <Card getAllTodo={getAllTodo} title={todo.title} desc={todo.desc} id={todo._id} created={todo.createdAt} updated={todo.updatedAt} />
                     </div>
                   </> : <>No todo created yet</>
                 }
