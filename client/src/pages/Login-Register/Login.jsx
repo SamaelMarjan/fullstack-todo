@@ -3,8 +3,11 @@ import './loginRegister.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { Toaster, toast } from 'react-hot-toast'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import {login} from '../../redux/authSlice'
 
 const Login = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [input, setInput] = useState({
     email: '',
@@ -27,6 +30,7 @@ const Login = () => {
         toast.error(data.message)
       } else {
         toast.success(data.message)
+        dispatch(login(data))
         navigate('/todos')
       }
     } catch (error) {

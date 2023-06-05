@@ -1,0 +1,26 @@
+.todo-card {
+    position: relative;
+}
+
+.todo-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .9rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.todo-edit:hover {
+    color: green;
+}
+
+.created-updated {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: .9rem;
+    margin-right: 1rem;
+
+
+}
