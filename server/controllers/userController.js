@@ -93,3 +93,35 @@ module.exports.forgotController = async(req, res) => {
         })
     }
 }
+
+//get user
+module.exports.getUser = async(req, res) => {
+    try {
+        const user = await userModel.findById(req.user.id).select('-password')
+        res.status(200).json({
+            success: true, message: "User", user
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            success: false, message: 'Error on get user'
+        })
+    }
+}
+
+//update user
+module.exports.updateUser = async(req, res) => {
+    try {
+        const {password} = req.body
+        const hash = await hashPass(password)
+        const user = await userModel.findByIdAndUpdate(req.user.id,{...req.body, password: hash}, {new: true}).select('-password')
+        res.status(200).json({
+            success: true, message: "User updated", user
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            success: false, message: 'Error on update user'
+        })
+    }
+}
