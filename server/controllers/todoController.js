@@ -39,6 +39,8 @@ module.exports.getAllTodo = async(req, res) => {
     }
 }
 
+//get my todo
+
 //get single todo
 module.exports.getSingleTodo = async(req, res) => {
     try {
