@@ -1,4 +1,4 @@
-const { createTodo, getAllTodo, getSingleTodo, updateTodo, deleteTodo } = require('../controllers/todoController')
+const { createTodo, getAllTodo, getSingleTodo, updateTodo, deleteTodo, myTodo } = require('../controllers/todoController')
 const { verifyToken } = require('../middlewares/verifyToken')
 
 const router = require('express').Router()
@@ -8,6 +8,9 @@ router.post('/create', verifyToken, createTodo)
 
 //get all todo route
 router.get('/get', getAllTodo)
+
+//my todo route
+router.get('/mytodo', verifyToken, myTodo)
 
 //get single todo
 router.get('/get/:id', getSingleTodo)

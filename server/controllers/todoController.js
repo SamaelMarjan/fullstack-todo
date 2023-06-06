@@ -40,6 +40,19 @@ module.exports.getAllTodo = async(req, res) => {
 }
 
 //get my todo
+module.exports.myTodo = async(req, res) => {
+    try {
+        const todo = await todoModel.find({userId: req.user.id})
+        res.status(200).json({
+            success: true, message: "Only my todos", todo
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            success: false, message: 'Error while getting my todo'
+        })
+    }
+}
 
 //get single todo
 module.exports.getSingleTodo = async(req, res) => {
