@@ -12,7 +12,7 @@ import Dashbord from '../Dashbord/Dashbord'
 const Todos = () => {
   const [modal, setModal] = useState(false)
   const [todo, setTodo] = useState([])
-  const {user} = useSelector((state) => state.auth)
+  const {user, token} = useSelector((state) => state.auth)
   const handleOpen = () => {
     setModal(!modal)
   }
@@ -20,7 +20,11 @@ const Todos = () => {
   //get all todo
   const getAllTodo = async() => {
     try {
-      const {data} = await axios.get('http://localhost:5000/todo/get')
+      const {data} = await axios.get('http://localhost:5000/todo/mytodo', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       console.log(data.todo);
       // Sort todos by createdAt in descending order
       const sortedTodos = data.todo.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt) || new Date(b.createdAt) - new Date(a.createdAt));
@@ -49,18 +53,14 @@ const Todos = () => {
         </Modal>
         <div className='container mt-5'>
           {
-            todo && 
+            todo && todo?.length > 0 ? 
             todo.map((todo) => (
               <div key={todo._id} >
-                {
-                  user?._id === todo?.userId?._id ? <>
-                    <div className='card mb-5'>
-                      <Card getAllTodo={getAllTodo} title={todo.title} desc={todo.desc} id={todo._id} created={todo.createdAt} updated={todo.updatedAt} />
-                    </div>
-                  </> : <>No todo created yet</>
-                }
+                <div className='card mb-5'>
+                  <Card getAllTodo={getAllTodo} title={todo?.title} desc={todo?.desc} id={todo._id} created={todo.createdAt} updated={todo.updatedAt} />
+                </div>
               </div>
-            ))
+            )) : <>No todo</>
           }
         </div>
     </div>
