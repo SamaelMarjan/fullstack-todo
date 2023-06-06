@@ -29,6 +29,7 @@ const Create = ({handleOpen, getAllTodo}) => {
         toast.success(data.message)
         handleOpen()
         getAllTodo()
+        setInput({title: '', desc:''})
       } else {
         toast.error(data.message)
       }
