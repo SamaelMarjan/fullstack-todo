@@ -81,9 +81,6 @@ const Navbar = () => {
                   <li>
                     <Link to={'/profile'} className='modal-link'>Profile</Link>
                   </li>
-                  <li>
-                    <Link to={'/dashbord'} className='modal-link'>Dashbord</Link>
-                  </li>
                   <li onClick={handleOpenModal}>
                     <NavLink className='modal-link'>Create</NavLink>
                   </li>
