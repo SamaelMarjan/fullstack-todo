@@ -1,10 +1,23 @@
 .dashbord {
 }
 
+.dashbord-body {
+    position: relative;
+}
+
+.dash-setting {
+    position: absolute;
+    top: 76%;
+    left: 20.2%;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+}
+
 .profile {
     height: 10rem;
     display: flex;
-    align-items: center;
     gap: 1rem;
 }
 
