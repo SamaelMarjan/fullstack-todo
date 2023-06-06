@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import {FiEdit} from 'react-icons/fi'
+import {AiFillDelete} from 'react-icons/ai'
 import './card.css'
 import { Modal } from 'antd'
 import Edit from '../../pages/Create/Edit'
@@ -21,7 +22,8 @@ const Card = ({title, desc, id, created, updated, getAllTodo}) => {
                 <Link to={``} className="btn btn-primary">Go somewhere</Link>
             </div>
             <div className='todo-edit'>
-                <FiEdit onClick={() => {handleModal()}} />
+                <FiEdit  onClick={() => {handleModal()}} />
+                <AiFillDelete size={20} />
             </div>
             <div className='created-updated'>
                 <span>updatedAt: {moment(updated).format('YYYY-MM-DD')}</span> &nbsp;

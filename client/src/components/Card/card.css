@@ -9,10 +9,9 @@
     padding: .9rem;
     margin-right: 1rem;
     cursor: pointer;
-}
-
-.todo-edit:hover {
-    color: green;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .created-updated {

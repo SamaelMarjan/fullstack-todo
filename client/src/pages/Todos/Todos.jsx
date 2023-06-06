@@ -7,6 +7,7 @@ import './todos.css'
 import Card from '../../components/Card/Card'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import Dashbord from '../Dashbord/Dashbord'
 
 const Todos = () => {
   const [modal, setModal] = useState(false)
@@ -36,8 +37,9 @@ const Todos = () => {
   return (
     <div className='container-fluid mt-5 mb-3 todos'>
         <Toaster />
+        <Dashbord />
         <div className='container'>
-        <div className='todos-btn btn border' onClick={handleOpen}>
+        <div className='todos-btn btn border mt-5' onClick={handleOpen}>
           <span>Add</span>
           <IoAddOutline size={25} />
         </div>

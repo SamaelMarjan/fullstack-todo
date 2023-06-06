@@ -4,16 +4,23 @@ import './navbar.css'
 import {AiOutlineMenu} from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/authSlice'
+import { Modal } from 'antd'
+import Create from '../../pages/Create/Create'
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const [click, setClick] = useState(false)
+  const [modal, setModal] = useState(false)
   const profileRef = useRef(null);
   const navigate = useNavigate()
   const {user} = useSelector((state) => state.auth)
 
   const handleOpen = () => {
     setClick(!click)
+  }
+
+  const handleOpenModal = () => {
+    setModal(!modal)
   }
 
   useEffect(() => {
@@ -77,15 +84,19 @@ const Navbar = () => {
                   <li>
                     <Link to={'/dashbord'} className='modal-link'>Dashbord</Link>
                   </li>
-                  <li>
-                    <NavLink to={'/create'} className='modal-link'>Create</NavLink>
+                  <li onClick={handleOpenModal}>
+                    <NavLink className='modal-link'>Create</NavLink>
                   </li>
                   <li>
                     <NavLink className='modal-link' onClick={handleLogout}>Logout</NavLink>
                   </li>
                 </ul>
+                
               </div>
             }
+                  <Modal open={modal} onCancel={handleOpenModal} onOk={handleOpenModal} >
+                    <Create />
+                  </Modal>
           </ul>
         </div>
       </div>

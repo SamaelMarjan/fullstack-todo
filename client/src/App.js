@@ -11,6 +11,7 @@ import Todos from './pages/Todos/Todos';
 import ForgotPass from './pages/Login-Register/ForgotPass';
 import { useSelector } from 'react-redux';
 import Edit from './pages/Create/Edit';
+import Dashbord from './pages/Dashbord/Dashbord';
 
 function App() {
   const {user} = useSelector((state) => state.auth)
@@ -26,6 +27,7 @@ function App() {
         <Route path='/create' element={user ? <Create /> : <Navigate to={'/login'} />} />
         <Route path='/edit/:id' element={user ? <Edit /> : <Navigate to={'/login'} />} />
         <Route path='/todos' element={user ? <Todos /> : <Navigate to={'/login'} />} />
+        <Route path='/dashbord' element={user ? <Dashbord /> : <Navigate to={'/login'} />} />
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />

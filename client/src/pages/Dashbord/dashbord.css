@@ -1,0 +1,19 @@
+.dashbord {
+}
+
+.profile {
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+}
