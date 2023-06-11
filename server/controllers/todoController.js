@@ -42,7 +42,7 @@ module.exports.getAllTodo = async(req, res) => {
 //get my todo
 module.exports.myTodo = async(req, res) => {
     try {
-        const todo = await todoModel.find({userId: req.user.id})
+        const todo = await todoModel.find({userId: req.user.id}).populate('userId', '-password')
         res.status(200).json({
             success: true, message: "Only my todos", todo
         })

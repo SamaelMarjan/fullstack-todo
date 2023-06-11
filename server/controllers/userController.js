@@ -113,8 +113,8 @@ module.exports.getUser = async(req, res) => {
 module.exports.updateUser = async(req, res) => {
     try {
         const {password} = req.body
-        const hash = await hashPass(password)
-        const user = await userModel.findByIdAndUpdate(req.user.id,{...req.body, password: hash}, {new: true}).select('-password')
+        const hashed = await hashPass(password)
+        const user = await userModel.findByIdAndUpdate(req.user.id,{...req.body, password: hashed}, {new: true}).select('-password')
         res.status(200).json({
             success: true, message: "User updated", user
         })

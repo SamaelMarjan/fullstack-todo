@@ -26,6 +26,10 @@
     height: 150px;
 }
 
+.image > img {
+    width: 100%;
+}
+
 .profile-section {
     display: flex;
     flex-direction: column;
